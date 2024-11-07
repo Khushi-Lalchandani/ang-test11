@@ -1,0 +1,36 @@
+.card {
+  padding: 1.2rem;
+  border: 1px solid #000;
+  &_details {
+    &-text {
+    }
+  }
+  &_flex {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    &-details {
+      &--header {
+      }
+    }
+    &-img {
+      height: 5rem;
+      width: 5rem;
+      border-radius: 50%;
+    }
+  }
+}
+.employee {
+  list-style: none;
+  display: flex;
+  margin: 0 2%;
+  justify-content: space-between;
+  // align-items: flex-start;
+}
+.line {
+  width: 80%;
+  transform: translateX(13%);
+  height: 0.3rem;
+  margin: 2rem 0;
+  background-color: #000;
+}

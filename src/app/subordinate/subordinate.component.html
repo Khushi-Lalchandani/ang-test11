@@ -1,0 +1,19 @@
+<div class="employee">
+  <div class="card" *ngFor="let sub of subordinate" (click)="expand(sub)">
+    <div class="card_details">
+      <div class="card_flex">
+        <img class="card_flex-img" [src]="sub.imageUrl" [alt]="sub.name" />
+        <div class="card_flex-details">
+          <h4 class="card_flex-details--header">{{ sub.name }}</h4>
+          <p>{{ sub.designation }}</p>
+        </div>
+      </div>
+
+      <p class="card_details-text">Email: {{ sub.email }}</p>
+      <p class="card_details-text">Manager ID: {{ sub.managerId }}</p>
+      <p class="card_details-text">
+        Subordinates: {{ sub.subordinates?.length }}
+      </p>
+    </div>
+  </div>
+</div>
