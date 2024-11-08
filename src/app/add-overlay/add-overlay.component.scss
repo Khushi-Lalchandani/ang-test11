@@ -1,0 +1,31 @@
+.form {
+  height: 80%;
+  width: 60%;
+  position: fixed;
+  background-color: #efe;
+  top: 10%;
+  left: 20%;
+  padding: 2rem;
+  box-shadow: 0 10px 16px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+
+  &_labels {
+    font-size: 1.6rem;
+    margin-top: 1rem;
+  }
+  &_inputs {
+    padding: 1rem;
+    width: 80%;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.1);
+
+    &:focus {
+      box-shadow: inset 0 3px 4px rgba(0, 255, 0, 0.4);
+    }
+  }
+}
+.btn {
+  margin-right: 1.2rem;
+}

@@ -1,0 +1,53 @@
+<!-- export interface Employee {
+  id: number;
+  name: string;
+  managerId: number | null;
+  imageUrl: string;
+  email: string;
+  subordinates: number[] | null;
+  designation: string;
+  isExpanded?: boolean;
+  isManager?: boolean;
+}
+[]; -->
+<div class="form">
+  <h2>Add Subordinate</h2>
+  <form [formGroup]="form">
+    <div>
+      <label class="form_labels">Name:</label>
+      <br />
+      <input
+        class="form_inputs"
+        type="text"
+        placeholder="Name"
+        formControlName="name"
+      />
+    </div>
+    <div>
+      <label class="form_labels">Email:</label>
+      <br />
+
+      <input
+        type="email"
+        class="form_inputs"
+        formControlName="email"
+        placeholder="Email"
+      />
+    </div>
+    <div>
+      <label class="form_labels">Designation:</label>
+      <br />
+
+      <input
+        type="text"
+        class="form_inputs"
+        formControlName="designation"
+        placeholder="Designation"
+      />
+    </div>
+    <br />
+
+    <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
+    <button class="btn btn-default" (click)="onEmit()">Cancel</button>
+  </form>
+</div>

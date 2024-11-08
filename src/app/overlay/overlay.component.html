@@ -1,0 +1,31 @@
+<div class="overlay" *ngIf="data">
+  <div class="overlay_content">
+    <div class="overlay_content-header">
+      <img
+        src="../../assets/imgs/trash.png"
+        alt="Delete icon"
+        class="overlay_content-image"
+      />
+      <span class="overlay_content-text">Delete</span>
+    </div>
+    <img
+      src="../../assets/imgs/x-mark.png"
+      alt="Close icon"
+      class="overlay_content-image"
+      (click)="onEmit()"
+    />
+  </div>
+  <p class="overlay_text">
+    Are you sure you would like to Delete employee with ID<strong>
+      {{ data.id }}</strong
+    >
+    and Name
+    <strong
+      ><u> {{ data.name }}</u></strong
+    >?
+  </p>
+  <div class="overlay_button">
+    <button class="btn btn-danger" style="margin-right: 1.2rem">Delete</button>
+    <button class="btn btn-default" (click)="onEmit()">Cancel</button>
+  </div>
+</div>

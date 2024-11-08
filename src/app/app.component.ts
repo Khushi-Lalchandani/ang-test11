@@ -8,12 +8,21 @@ import { EmployeeService } from './exmployee.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  exployee_data!: Employee[];
+  employee_data!: Employee[];
   rootEmployee!: Employee;
   subordinates: any;
+
   ngOnInit() {
-    this.exployee_data = this.eService.getEmployees();
-    this.exployee_data.filter((emp) => {
+    this.employee_data = this.eService.getEmployees();
+    this.employee_data.forEach((emp) => {
+      if (!emp.subordinates) {
+        emp.isManager = false;
+      } else {
+        emp.isManager = true;
+      }
+    });
+
+    this.employee_data.filter((emp) => {
       if (emp.managerId === null) {
         this.rootEmployee = emp;
       }
@@ -27,7 +36,8 @@ export class AppComponent implements OnInit {
         this.rootEmployee.subordinates
       );
     }
-    console.log(this.rootEmployee);
+    console.log(this.employee_data);
   }
+
   constructor(private eService: EmployeeService) {}
 }

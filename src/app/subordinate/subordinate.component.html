@@ -1,6 +1,6 @@
 <div class="employee">
-  <div class="card" *ngFor="let sub of subordinate" (click)="expand(sub)">
-    <div class="card_details">
+  <div class="card" *ngFor="let sub of subordinate">
+    <div class="card_details" (click)="expand(sub)">
       <div class="card_flex">
         <img class="card_flex-img" [src]="sub.imageUrl" [alt]="sub.name" />
         <div class="card_flex-details">
@@ -11,9 +11,49 @@
 
       <p class="card_details-text">Email: {{ sub.email }}</p>
       <p class="card_details-text">Manager ID: {{ sub.managerId }}</p>
-      <p class="card_details-text">
-        Subordinates: {{ sub.subordinates?.length }}
+      <p
+        class="card_details-text"
+        *ngIf="sub.subordinates && sub.subordinates.length > 0"
+      >
+        Subordinates: {{ sub.subordinates.length }}
       </p>
     </div>
+    <div class="buttons">
+      <img
+        class="buttons_img"
+        src="../../assets/imgs/add.png"
+        alt="Add Subordinate"
+        (click)="addSub(sub)"
+      />
+      <img
+        class="buttons_img"
+        src="../../assets/imgs/trash.png"
+        alt="Delete employee"
+        (click)="deleteEmployee(sub)"
+      />
+      <img
+        class="buttons_img"
+        src="../../assets/imgs/refresh.png"
+        alt="Change manager"
+      />
+    </div>
+    <!-- <div *ngIf="sub.isExpanded" class="subordinate-cards">
+      <app-subordinate [subordinate]="expandedSubordinate"></app-subordinate>
+    </div> -->
   </div>
 </div>
+<app-subordinate
+  *ngIf="expandedSubordinate && expandedSubordinate.length > 0"
+  [subordinate]="expandedSubordinate"
+></app-subordinate>
+<app-overlay
+  *ngIf="showDeleteOverlay"
+  (show)="showDeleteOverlay = $event"
+  [data]="updatedSub"
+></app-overlay>
+
+<app-add-overlay
+  *ngIf="showAddOverlay"
+  (show)="showAddOverlay = $event"
+  [data]="updatedSub"
+></app-add-overlay>

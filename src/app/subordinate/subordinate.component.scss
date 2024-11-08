@@ -1,5 +1,6 @@
 .card {
   padding: 1.2rem;
+
   border: 1px solid #000;
   &_details {
     &-text {
@@ -34,3 +35,26 @@
   margin: 2rem 0;
   background-color: #000;
 }
+.buttons {
+  display: flex;
+  gap: 10%;
+  margin-left: auto;
+  &_img {
+    height: 1.8rem;
+    width: 1.8rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.subordinate-cards {
+  margin-top: 2rem; /* Add some space for subordinate cards */
+}
+
+/* If the card is expanded, show the subordinates */
+// &.expanded .subordinate-cards {
+//   max-height: 1000px; /* Make space for subordinates */
+//   opacity: 1;
+// }

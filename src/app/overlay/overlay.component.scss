@@ -1,0 +1,38 @@
+.overlay {
+  border: 1px solid #000;
+  border-radius: 2rem;
+  height: 15rem;
+  box-shadow: 0 10px 10px 16px rgba(0, 0, 0, 0.04);
+  z-index: 2;
+  background-color: #eef;
+  padding: 2rem;
+  position: fixed;
+  top: 30%;
+  left: 25%;
+
+  &:hover {
+    box-shadow: inset 0 10px 10px 16px rgba(0, 0, 0, 0.04);
+  }
+  &_content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+
+    align-items: center;
+    &-header {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    &-image {
+      height: 1.6rem;
+      width: 1.6rem;
+    }
+    &-text {
+      font-size: 1.4rem;
+      margin-top: 0.4rem;
+    }
+    &_button {
+    }
+  }
+}
