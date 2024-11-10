@@ -1,5 +1,12 @@
 <div class="employee">
-  <div class="card" *ngFor="let sub of subordinate">
+  <div
+    class="card"
+    *ngFor="let sub of subordinate"
+    [ngClass]="{
+      expand: sub.isExpanded && sub.subordinates,
+      right: subordinate.length === 1
+    }"
+  >
     <div class="card_details" (click)="expand(sub)">
       <div class="card_flex">
         <img class="card_flex-img" [src]="sub.imageUrl" [alt]="sub.name" />
@@ -37,9 +44,6 @@
         alt="Change manager"
       />
     </div>
-    <!-- <div *ngIf="sub.isExpanded" class="subordinate-cards">
-      <app-subordinate [subordinate]="expandedSubordinate"></app-subordinate>
-    </div> -->
   </div>
 </div>
 <app-subordinate

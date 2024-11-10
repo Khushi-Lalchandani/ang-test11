@@ -1,7 +1,12 @@
 .card {
   padding: 1.2rem;
-
   border: 1px solid #000;
+  box-sizing: border-box;
+
+  min-height: 20rem;
+  min-width: 25rem;
+
+  position: relative;
   &_details {
     &-text {
     }
@@ -20,21 +25,28 @@
       border-radius: 50%;
     }
   }
+
+  &::before {
+    content: "";
+    height: 2rem;
+    width: 0.3rem;
+    background-color: #0eb2e4;
+    position: absolute;
+    top: -10%;
+    left: 50%;
+  }
 }
 .employee {
   list-style: none;
   display: flex;
-  margin: 0 2%;
+
+  margin: 0 2rem;
   justify-content: space-between;
-  // align-items: flex-start;
+  box-sizing: border-box;
+  padding: 2rem 0;
+  border-bottom: 2px solid #000;
 }
-.line {
-  width: 80%;
-  transform: translateX(13%);
-  height: 0.3rem;
-  margin: 2rem 0;
-  background-color: #000;
-}
+
 .buttons {
   display: flex;
   gap: 10%;
@@ -48,13 +60,20 @@
     }
   }
 }
+.expand {
+  height: auto;
+  position: relative;
 
-.subordinate-cards {
-  margin-top: 2rem; /* Add some space for subordinate cards */
+  &::after {
+    content: "";
+    height: 2rem;
+    width: 0.3rem;
+    background-color: #0eb2e4;
+    bottom: -10%;
+    left: 50%;
+    position: absolute;
+  }
 }
-
-/* If the card is expanded, show the subordinates */
-// &.expanded .subordinate-cards {
-//   max-height: 1000px; /* Make space for subordinates */
-//   opacity: 1;
-// }
+.right {
+  margin-left: auto;
+}

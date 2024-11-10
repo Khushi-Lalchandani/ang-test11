@@ -24,13 +24,18 @@ export class SubordinateComponent implements OnInit {
     this.expandedSubordinate = this.eService.getEmployeesByIds(ids);
   }
   expand(sub: Employee) {
+    this.subordinate.forEach((sibling) => {
+      if (sibling !== sub) {
+        sibling.isExpanded = false;
+      }
+    });
+
     sub.isExpanded = !sub.isExpanded;
+
+    this.expandedSubordinate = [];
     if (sub.isExpanded && sub.subordinates) {
-      this.loadSubordinates(sub.subordinates); // Load subordinates when expanded
-    } else {
-      this.subordinatesUpdated.emit([]); // Emit empty array when collapsing
+      this.loadSubordinates(sub.subordinates);
     }
-    // console.log(this.expandedSubordinate);
   }
   deleteEmployee(sub: Employee) {
     this.showDeleteOverlay = true;
