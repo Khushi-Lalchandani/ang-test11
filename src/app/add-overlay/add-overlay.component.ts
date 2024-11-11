@@ -21,6 +21,7 @@ export class AddOverlayComponent implements OnInit {
       designation: new FormControl(null, Validators.required),
       imageUrl: new FormControl('https://via.placeholder.com/150'),
       id: new FormControl(this.employee_data.length + 1),
+      managerId: new FormControl(this.data.id),
     });
   }
   onSubmit() {
@@ -34,7 +35,7 @@ export class AddOverlayComponent implements OnInit {
     this.eService.dataChanged.next(true);
     this.show.emit(false);
 
-    // console.log(this.employee_data);
+    console.log(this.employee_data);
   }
   onEmit() {
     this.show.emit(false);
