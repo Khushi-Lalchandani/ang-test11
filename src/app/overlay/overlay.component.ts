@@ -34,7 +34,7 @@ export class OverlayComponent implements OnInit {
         }
       }
     });
-
+    this.eService.dataChanged.next(true);
     this.show.emit(false);
     console.log(this.employee_data);
   }

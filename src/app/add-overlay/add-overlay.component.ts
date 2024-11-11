@@ -14,7 +14,7 @@ export class AddOverlayComponent implements OnInit {
   @Output() show = new EventEmitter<boolean>();
   form!: FormGroup;
   ngOnInit(): void {
-    console.log(this.data);
+    // console.log(this.data);
     this.form = new FormGroup({
       name: new FormControl(null, Validators.required),
       email: new FormControl(null, [Validators.required, Validators.email]),
@@ -31,7 +31,10 @@ export class AddOverlayComponent implements OnInit {
         ? this.data.subordinates?.push(this.form.value.id)
         : this.data.subordinates;
     });
-    console.log(this.employee_data);
+    this.eService.dataChanged.next(true);
+    this.show.emit(false);
+
+    // console.log(this.employee_data);
   }
   onEmit() {
     this.show.emit(false);

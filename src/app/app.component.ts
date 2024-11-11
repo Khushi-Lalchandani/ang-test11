@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Employee } from './exmployee.model';
 import { EmployeeService } from './exmployee.service';
 
@@ -11,8 +12,21 @@ export class AppComponent implements OnInit {
   employee_data!: Employee[];
   rootEmployee!: Employee;
   subordinates: any;
+  dataSubcription!: Subscription;
 
   ngOnInit() {
+    this.dataSubcription = this.eService.dataChanged.subscribe(
+      (dataChanged) => {
+        if (dataChanged) {
+          this.loadData();
+        }
+      }
+    );
+    this.loadData();
+  }
+
+  loadData() {
+    this.employee_data = this.eService.getEmployees();
     this.employee_data = this.eService.getEmployees();
     this.employee_data.forEach((emp) => {
       if (!emp.subordinates) {

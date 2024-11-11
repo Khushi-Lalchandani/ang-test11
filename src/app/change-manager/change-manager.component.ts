@@ -19,6 +19,7 @@ export class ChangeManagerComponent implements OnInit {
       emp.id < this.data.id ? this.emails.push(emp.email) : this.emails;
     });
     console.log(this.emails);
+    this.eService.dataChanged.next(true);
   }
   onSelect() {
     console.log(this.emailSelected);

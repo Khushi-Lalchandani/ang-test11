@@ -23,6 +23,13 @@ export class SubordinateComponent implements OnInit {
     // console.log(this.subordinate);
   }
   loadSubordinates(ids: number[]) {
+    this.dataChangedSubscription = this.eService.dataChanged.subscribe(
+      (dataChanged) => {
+        if (dataChanged) {
+          this.expandedSubordinate = this.eService.getEmployeesByIds(ids);
+        }
+      }
+    );
     this.expandedSubordinate = this.eService.getEmployeesByIds(ids);
   }
   expand(sub: Employee) {
