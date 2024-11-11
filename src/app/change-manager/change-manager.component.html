@@ -1,0 +1,13 @@
+<div class="overlay">
+  <p class="overlay_header">Change manager</p>
+  <select
+    class="overlay_select"
+    [(ngModel)]="emailSelected"
+    (change)="onSelect()"
+  >
+    <option *ngFor="let email of emails" [value]="email">
+      {{ email }}
+    </option>
+  </select>
+  <button class="btn btn-default" (click)="onEmit()">Cancel</button>
+</div>

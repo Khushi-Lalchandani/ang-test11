@@ -7,6 +7,7 @@ import { SubordinateComponent } from './subordinate/subordinate.component';
 import { OverlayComponent } from './overlay/overlay.component';
 import { AddOverlayComponent } from './add-overlay/add-overlay.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChangeManagerComponent } from './change-manager/change-manager.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SubordinateComponent,
     OverlayComponent,
     AddOverlayComponent,
+    ChangeManagerComponent,
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule],
   providers: [EmployeeService],

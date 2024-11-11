@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Employee } from './exmployee.model';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class EmployeeService {
+  dataChanged = new Subject<boolean>();
   employee_data = [
     {
       id: 1,

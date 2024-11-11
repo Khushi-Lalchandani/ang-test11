@@ -17,6 +17,12 @@
     align-items: flex-start;
     &-details {
       &--header {
+        margin: 0.8rem 0 0 0;
+        font-size: 1.6rem;
+      }
+
+      &--designation {
+        font-size: 1.2rem;
       }
     }
     &-img {
@@ -50,6 +56,7 @@
 .buttons {
   display: flex;
   gap: 10%;
+  margin-bottom: 1rem;
   margin-left: auto;
   &_img {
     height: 1.8rem;

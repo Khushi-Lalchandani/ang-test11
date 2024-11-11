@@ -12,7 +12,7 @@
         <img class="card_flex-img" [src]="sub.imageUrl" [alt]="sub.name" />
         <div class="card_flex-details">
           <h4 class="card_flex-details--header">{{ sub.name }}</h4>
-          <p>{{ sub.designation }}</p>
+          <p class="card_flex-details--designation">{{ sub.designation }}</p>
         </div>
       </div>
 
@@ -38,12 +38,14 @@
         alt="Delete employee"
         (click)="deleteEmployee(sub)"
       />
-      <img
-        class="buttons_img"
-        src="../../assets/imgs/refresh.png"
-        alt="Change manager"
-      />
     </div>
+    <button
+      class="btn btn-info"
+      [disabled]="!sub.subordinates"
+      (click)="changeManager(sub)"
+    >
+      Change manager
+    </button>
   </div>
 </div>
 <app-subordinate
@@ -61,3 +63,8 @@
   (show)="showAddOverlay = $event"
   [data]="updatedSub"
 ></app-add-overlay>
+<app-change-manager
+  *ngIf="managerChanged"
+  [data]="updatedSub"
+  (show)="managerChanged = $event"
+></app-change-manager>

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Employee } from '../exmployee.model';
 import { EmployeeService } from '../exmployee.service';
+import { subscribeOn, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-subordinate',
@@ -13,10 +14,11 @@ export class SubordinateComponent implements OnInit {
   showAddOverlay: boolean = false;
   @Output() data = new EventEmitter<Employee>();
   @Output() subordinatesUpdated = new EventEmitter<Employee[]>();
-
+  dataChangedSubscription!: Subscription;
   @Input() expanded!: boolean | undefined;
   showDeleteOverlay: boolean = false;
   expandedSubordinate!: Employee[];
+  managerChanged: boolean = false;
   ngOnInit(): void {
     // console.log(this.subordinate);
   }
@@ -45,6 +47,9 @@ export class SubordinateComponent implements OnInit {
     this.showAddOverlay = true;
     this.updatedSub = sub;
   }
-
+  changeManager(sub: Employee) {
+    this.managerChanged = true;
+    this.updatedSub = sub;
+  }
   constructor(private eService: EmployeeService) {}
 }
