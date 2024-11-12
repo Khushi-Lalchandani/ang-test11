@@ -1,15 +1,3 @@
-<!-- export interface Employee {
-  id: number;
-  name: string;
-  managerId: number | null;
-  imageUrl: string;
-  email: string;
-  subordinates: number[] | null;
-  designation: string;
-  isExpanded?: boolean;
-  isManager?: boolean;
-}
-[]; -->
 <div class="form">
   <h2>Add Subordinate</h2>
   <form [formGroup]="form">
@@ -47,7 +35,13 @@
     </div>
     <br />
 
-    <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
+    <button
+      class="btn btn-primary"
+      (click)="onSubmit()"
+      [disabled]="!form.valid"
+    >
+      Submit
+    </button>
     <button class="btn btn-default" (click)="onEmit()">Cancel</button>
   </form>
 </div>

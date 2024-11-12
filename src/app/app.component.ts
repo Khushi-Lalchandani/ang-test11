@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
         this.rootEmployee.subordinates
       );
     }
-    console.log(this.employee_data);
+    // console.log(this.employee_data);
   }
 
   constructor(private eService: EmployeeService) {}

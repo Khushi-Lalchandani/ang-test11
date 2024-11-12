@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { Employee } from '../exmployee.model';
 import { EmployeeService } from '../exmployee.service';
 import { subscribeOn, Subscription } from 'rxjs';
@@ -33,6 +40,7 @@ export class SubordinateComponent implements OnInit {
     this.expandedSubordinate = this.eService.getEmployeesByIds(ids);
   }
   expand(sub: Employee) {
+    // console.log(this.eService.employee_data);
     this.subordinate.forEach((sibling) => {
       if (sibling !== sub) {
         sibling.isExpanded = false;
@@ -58,5 +66,6 @@ export class SubordinateComponent implements OnInit {
     this.managerChanged = true;
     this.updatedSub = sub;
   }
+
   constructor(private eService: EmployeeService) {}
 }

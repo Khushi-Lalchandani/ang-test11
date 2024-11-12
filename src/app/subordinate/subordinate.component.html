@@ -7,6 +7,13 @@
       right: subordinate.length === 1
     }"
   >
+    <img
+      class="btn_img"
+      src="../../assets/imgs/trash.png"
+      alt="Delete employee"
+      (click)="deleteEmployee(sub)"
+    />
+
     <div class="card_details" (click)="expand(sub)">
       <div class="card_flex">
         <img class="card_flex-img" [src]="sub.imageUrl" [alt]="sub.name" />
@@ -25,25 +32,17 @@
         Subordinates: {{ sub.subordinates.length }}
       </p>
     </div>
-    <div class="buttons">
-      <img
-        class="buttons_img"
-        src="../../assets/imgs/add.png"
-        alt="Add Subordinate"
-        (click)="addSub(sub)"
-      />
-      <img
-        class="buttons_img"
-        src="../../assets/imgs/trash.png"
-        alt="Delete employee"
-        (click)="deleteEmployee(sub)"
-      />
-    </div>
+
     <button
-      class="btn btn-info"
-      [disabled]="!sub.subordinates"
-      (click)="changeManager(sub)"
+      class="btn btn-primary"
+      (click)="addSub(sub)"
+      [disabled]="sub.subordinates?.length === 5"
     >
+      Add Subordinate
+    </button>
+    <br />
+
+    <button class="btn btn-info" (click)="changeManager(sub)">
       Change manager
     </button>
   </div>

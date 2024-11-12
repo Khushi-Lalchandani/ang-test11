@@ -114,4 +114,10 @@ export class EmployeeService {
   getEmployeesByIds(ids: number[]): any[] {
     return this.employee_data.filter((employee) => ids.includes(employee.id));
   }
+
+  addEmployee(employee: any): void {
+    this.employee_data.push(employee);
+    // Emit the change to notify other components
+    this.dataChanged.next(true);
+  }
 }

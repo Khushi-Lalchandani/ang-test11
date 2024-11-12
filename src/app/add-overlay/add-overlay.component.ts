@@ -22,16 +22,22 @@ export class AddOverlayComponent implements OnInit {
       imageUrl: new FormControl('https://via.placeholder.com/150'),
       id: new FormControl(this.employee_data.length + 1),
       managerId: new FormControl(this.data.id),
+      isExpanded: new FormControl(true),
     });
   }
   onSubmit() {
-    this.employee_data.push(this.form.value);
-
     this.employee_data.filter((emp) => {
-      emp.id === this.data.id
-        ? this.data.subordinates?.push(this.form.value.id)
-        : this.data.subordinates;
+      if (emp.id === this.data.id) {
+        if (this.data.subordinates && this.data.subordinates.length < 5) {
+          this.data.subordinates = [
+            ...this.data.subordinates,
+            this.form.value.id,
+          ];
+        }
+      }
     });
+
+    this.eService.addEmployee(this.form.value);
     this.eService.dataChanged.next(true);
     this.show.emit(false);
 

@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Employee } from '../exmployee.model';
 import { EmployeeService } from '../exmployee.service';
 
@@ -9,10 +17,12 @@ import { EmployeeService } from '../exmployee.service';
 })
 export class OverlayComponent implements OnInit {
   @Input() data!: Employee;
+
+  dataSubscription!: Subscription;
   employee_data: Employee[] = this.eService.getEmployees();
   @Output() show = new EventEmitter<boolean>();
   ngOnInit(): void {
-    if (this.data) console.log(this.data);
+    // if (this.data) console.log(this.data);
   }
   onEmit() {
     this.show.emit(false);
@@ -27,7 +37,7 @@ export class OverlayComponent implements OnInit {
     }
 
     this.employee_data.forEach((emp) => {
-      if (emp.subordinates !== null) {
+      if (emp.subordinates && Array.isArray(emp.subordinates)) {
         const subordinateIndex = emp.subordinates.indexOf(this.data.id);
         if (subordinateIndex !== -1) {
           emp.subordinates.splice(subordinateIndex, 1);
@@ -36,7 +46,8 @@ export class OverlayComponent implements OnInit {
     });
     this.eService.dataChanged.next(true);
     this.show.emit(false);
-    console.log(this.employee_data);
+    // console.log(this.employee_data);
   }
+
   constructor(private eService: EmployeeService) {}
 }
