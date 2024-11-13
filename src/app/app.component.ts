@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
 
   loadData() {
     this.employee_data = this.eService.getEmployees();
-    this.employee_data = this.eService.getEmployees();
     this.employee_data.forEach((emp) => {
       if (!emp.subordinates) {
         emp.isManager = false;
@@ -50,7 +49,6 @@ export class AppComponent implements OnInit {
         this.rootEmployee.subordinates
       );
     }
-    // console.log(this.employee_data);
   }
 
   constructor(private eService: EmployeeService) {}

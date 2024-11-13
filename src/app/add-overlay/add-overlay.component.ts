@@ -28,6 +28,9 @@ export class AddOverlayComponent implements OnInit {
   onSubmit() {
     this.employee_data.filter((emp) => {
       if (emp.id === this.data.id) {
+        if ((this.data.subordinates = [])) {
+          this.data.subordinates = [];
+        }
         if (this.data.subordinates && this.data.subordinates.length < 5) {
           this.data.subordinates = [
             ...this.data.subordinates,
@@ -36,12 +39,11 @@ export class AddOverlayComponent implements OnInit {
         }
       }
     });
-
     this.eService.addEmployee(this.form.value);
     this.eService.dataChanged.next(true);
     this.show.emit(false);
 
-    console.log(this.employee_data);
+    console.log(this.form.value);
   }
   onEmit() {
     this.show.emit(false);
