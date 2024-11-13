@@ -28,7 +28,7 @@ export class AddOverlayComponent implements OnInit {
   onSubmit() {
     this.employee_data.filter((emp) => {
       if (emp.id === this.data.id) {
-        if ((this.data.subordinates = [])) {
+        if (!this.data.subordinates) {
           this.data.subordinates = [];
         }
         if (this.data.subordinates && this.data.subordinates.length < 5) {

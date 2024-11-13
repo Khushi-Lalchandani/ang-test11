@@ -18,7 +18,7 @@ export class ChangeManagerComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.data);
     this.employee_data.filter((emp) => {
-      emp.id < this.data.id ? this.emails.push(emp.email) : this.emails;
+      emp.id !== this.data.id ? this.emails.push(emp.email) : this.emails;
     });
     console.log(this.emails);
     this.eService.dataChanged.next(true);
@@ -42,10 +42,16 @@ export class ChangeManagerComponent implements OnInit {
           }
         }
       });
+
       this.employee_data.forEach((emp) => {
-        emp.email === this.emailSelected
-          ? emp.subordinates?.push(this.data.id)
-          : emp.subordinates;
+        if (emp.email === this.emailSelected) {
+          if (!emp.subordinates) {
+            emp.subordinates = [];
+          }
+          if (emp.subordinates) {
+            emp.subordinates.push(this.data.id);
+          }
+        }
       });
       this.eService.dataChanged.next(true);
     }
