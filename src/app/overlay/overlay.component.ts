@@ -29,25 +29,9 @@ export class OverlayComponent implements OnInit {
   }
 
   onDelete() {
-    const index = this.employee_data.findIndex(
-      (emp) => emp.id === this.data.id
-    );
-    if (index !== -1) {
-      this.employee_data.splice(index, 1);
-    }
-
-    this.employee_data.forEach((emp) => {
-      if (emp.subordinates && Array.isArray(emp.subordinates)) {
-        const subordinateIndex = emp.subordinates.indexOf(this.data.id);
-        if (subordinateIndex !== -1) {
-          emp.subordinates.splice(subordinateIndex, 1);
-        }
-      }
-    });
-
-    this.eService.dataChanged.next(true);
+    this.eService.deleteEmployee(this.data.id);
     this.show.emit(false);
-    // console.log(this.employee_data);
+    this.eService.dataChanged.next(true);
   }
 
   constructor(private eService: EmployeeService) {}

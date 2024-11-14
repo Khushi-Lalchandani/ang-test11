@@ -117,7 +117,17 @@ export class EmployeeService {
 
   addEmployee(employee: any): void {
     this.employee_data.push(employee);
-    // Emit the change to notify other components
+    this.dataChanged.next(true);
+  }
+  deleteEmployee(id: number) {
+    this.employee_data.forEach((emp) => {
+      if (emp.subordinates && emp.subordinates.includes(id)) {
+        const index = emp.subordinates.indexOf(id);
+        if (index !== -1) {
+          emp.subordinates.splice(index, 1);
+        }
+      }
+    });
     this.dataChanged.next(true);
   }
 }
