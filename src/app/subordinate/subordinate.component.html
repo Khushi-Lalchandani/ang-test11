@@ -23,13 +23,18 @@
         </div>
       </div>
 
-      <p class="card_details-text">Email: {{ sub.email }}</p>
-      <p class="card_details-text">Manager ID: {{ sub.managerId }}</p>
+      <p class="card_details-text">
+        <strong>Email:</strong><br />
+        {{ sub.email }}
+      </p>
+      <p class="card_details-text">
+        <strong> Manager ID:</strong> {{ sub.managerId }}
+      </p>
       <p
         class="card_details-text"
         *ngIf="sub.subordinates && sub.subordinates.length > 0"
       >
-        Subordinates: {{ sub.subordinates.length }}
+        <strong> Subordinates: </strong>{{ sub.subordinates.length }}
       </p>
     </div>
 

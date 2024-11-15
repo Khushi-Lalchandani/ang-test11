@@ -1,10 +1,11 @@
 .card {
   padding: 1.2rem;
-  border: 1px solid #000;
+  border: 1px solid #ddd;
   box-sizing: border-box;
+  border-radius: 1.4rem;
 
-  min-height: 20rem;
-  min-width: 25rem;
+  // height: 20rem;
+  width: 25rem;
 
   position: relative;
   &_details {
@@ -31,41 +32,27 @@
       border-radius: 50%;
     }
   }
-
-  &::before {
-    content: "";
-    height: 2rem;
-    width: 0.3rem;
-    background-color: #0eb2e4;
-    position: absolute;
-    top: -10%;
-    left: 50%;
-  }
 }
 .employee {
   list-style: none;
   display: flex;
 
-  margin: 0 2rem;
   justify-content: space-between;
+  position: relative;
+  flex-wrap: wrap;
+  gap: 2rem;
   box-sizing: border-box;
-  padding: 2rem 0;
+  padding: 2rem;
   border-bottom: 2px solid #000;
 }
 
 .expand {
   height: auto;
   position: relative;
+  background-color: #ec65a6;
+  box-shadow: 0 10px 16px 10px rgba(#000, 0.1);
 
-  &::after {
-    content: "";
-    height: 2rem;
-    width: 0.3rem;
-    background-color: #0eb2e4;
-    bottom: -10%;
-    left: 50%;
-    position: absolute;
-  }
+  border: none;
 }
 .right {
   margin: 0 auto;

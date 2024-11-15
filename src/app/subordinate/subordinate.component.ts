@@ -19,8 +19,6 @@ export class SubordinateComponent implements OnInit {
   @Input() subordinate!: Employee[];
   updatedSub!: Employee;
   showAddOverlay: boolean = false;
-  @Output() data = new EventEmitter<Employee>();
-  @Output() subordinatesUpdated = new EventEmitter<Employee[]>();
   dataChangedSubscription!: Subscription;
   @Input() expanded!: boolean | undefined;
   showDeleteOverlay: boolean = false;

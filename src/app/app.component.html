@@ -16,9 +16,12 @@
             </p>
           </div>
         </div>
-        <p class="card_details-text">Email:{{ rootEmployee.email }}</p>
         <p class="card_details-text">
-          Subordinates: {{ rootEmployee.subordinates?.length }}
+          <strong>Email: </strong> <br />{{ rootEmployee.email }}
+        </p>
+        <p class="card_details-text">
+          <strong> Subordinates: </strong>
+          {{ rootEmployee.subordinates?.length }}
         </p>
       </div>
     </div>
