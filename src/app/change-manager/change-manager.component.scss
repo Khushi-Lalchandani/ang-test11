@@ -1,12 +1,13 @@
 .overlay {
   background-color: #fee;
   position: fixed;
-  top: 10%;
-  left: 20%;
+  top: 30%;
+  left: 30%;
   width: 30%;
   height: 40%;
   border: 1px solid #000;
   padding: 2rem;
+  border-radius: 1.6rem;
 
   &_header {
     font-size: 2rem;

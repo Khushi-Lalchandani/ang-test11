@@ -1,55 +1,57 @@
-<div class="employee">
-  <div
-    class="card"
-    *ngFor="let sub of subordinate"
-    [ngClass]="{
-      expand: sub.isExpanded && sub.subordinates,
-      right: subordinate.length === 1
-    }"
-  >
-    <img
-      class="btn_img"
-      src="../../assets/imgs/trash.png"
-      alt="Delete employee"
-      (click)="deleteEmployee(sub)"
-    />
+<div class="outside">
+  <div class="employee">
+    <div
+      class="card"
+      *ngFor="let sub of subordinate"
+      [ngClass]="{
+        expand: sub.isExpanded && sub.subordinates,
+        right: subordinate.length === 1
+      }"
+    >
+      <img
+        class="btn_img"
+        src="../../assets/imgs/trash.png"
+        alt="Delete employee"
+        (click)="deleteEmployee(sub)"
+      />
 
-    <div class="card_details" (click)="expand(sub)">
-      <div class="card_flex">
-        <img class="card_flex-img" [src]="sub.imageUrl" [alt]="sub.name" />
-        <div class="card_flex-details">
-          <h4 class="card_flex-details--header">{{ sub.name }}</h4>
-          <p class="card_flex-details--designation">{{ sub.designation }}</p>
+      <div class="card_details" (click)="expand(sub)">
+        <div class="card_flex">
+          <img class="card_flex-img" [src]="sub.imageUrl" [alt]="sub.name" />
+          <div class="card_flex-details">
+            <h4 class="card_flex-details--header">{{ sub.name }}</h4>
+            <p class="card_flex-details--designation">{{ sub.designation }}</p>
+          </div>
         </div>
+
+        <p class="card_details-text">
+          <strong>Email:</strong><br />
+          {{ sub.email }}
+        </p>
+        <p class="card_details-text">
+          <strong> Manager ID:</strong> {{ sub.managerId }}
+        </p>
+        <p
+          class="card_details-text"
+          *ngIf="sub.subordinates && sub.subordinates.length > 0"
+        >
+          <strong> Subordinates: </strong>{{ sub.subordinates.length }}
+        </p>
       </div>
 
-      <p class="card_details-text">
-        <strong>Email:</strong><br />
-        {{ sub.email }}
-      </p>
-      <p class="card_details-text">
-        <strong> Manager ID:</strong> {{ sub.managerId }}
-      </p>
-      <p
-        class="card_details-text"
-        *ngIf="sub.subordinates && sub.subordinates.length > 0"
+      <button
+        class="btn_add"
+        (click)="addSub(sub)"
+        [disabled]="sub.subordinates && sub.subordinates.length >= 5"
       >
-        <strong> Subordinates: </strong>{{ sub.subordinates.length }}
-      </p>
+        Add Subordinate
+      </button>
+      <br />
+
+      <button class="btn_change" (click)="changeManager(sub)">
+        Change manager
+      </button>
     </div>
-
-    <button
-      class="btn btn-primary"
-      (click)="addSub(sub)"
-      [disabled]="sub.subordinates && sub.subordinates.length >= 5"
-    >
-      Add Subordinate
-    </button>
-    <br />
-
-    <button class="btn btn-info" (click)="changeManager(sub)">
-      Change manager
-    </button>
   </div>
 </div>
 <app-subordinate

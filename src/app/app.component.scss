@@ -11,15 +11,6 @@
     border-bottom: 2px solid #000;
     padding: 2rem;
     position: relative;
-
-    &::after {
-      content: "";
-      position: absolute;
-      height: 2rem;
-      width: 0.3rem;
-      background-color: #000;
-      bottom: 0;
-    }
   }
 }
 
@@ -29,7 +20,7 @@
   border: none;
   padding: 1.4rem;
   background-color: #ec65a6;
-  box-shadow: 0 10px 16px 10px rgba(#000, 0.1);
+  box-shadow: 0 16px 16px 10px rgba(#000, 0.04);
   width: 25rem;
 
   &_details {
