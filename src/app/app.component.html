@@ -31,6 +31,15 @@
       <button class="btn_change" (click)="changeManager(rootEmployee)">
         Change manager
       </button>
+      <button
+        class="btn_add"
+        (click)="addSub(rootEmployee)"
+        [disabled]="
+          rootEmployee.subordinates && rootEmployee.subordinates.length >= 5
+        "
+      >
+        Add Subordinate
+      </button>
     </div>
   </div>
 </div>
@@ -44,3 +53,8 @@
   [data]="updatedEmp"
   (show)="managerChanged = $event"
 ></app-change-manager>
+<app-add-overlay
+  *ngIf="showAddOverlay"
+  (show)="showAddOverlay = $event"
+  [data]="updatedSub"
+></app-add-overlay>

@@ -15,6 +15,8 @@ export class AppComponent implements OnInit {
   dataSubcription!: Subscription;
   managerChanged!: boolean;
   updatedEmp!: Employee;
+  showAddOverlay!: boolean;
+  updatedSub!: Employee;
   ngOnInit() {
     this.dataSubcription = this.eService.dataChanged.subscribe(
       (dataChanged) => {
@@ -54,6 +56,10 @@ export class AppComponent implements OnInit {
   changeManager(employee: Employee) {
     this.managerChanged = true;
     this.updatedEmp = employee;
+  }
+  addSub(sub: Employee) {
+    this.showAddOverlay = true;
+    this.updatedSub = sub;
   }
   constructor(private eService: EmployeeService) {}
 }
