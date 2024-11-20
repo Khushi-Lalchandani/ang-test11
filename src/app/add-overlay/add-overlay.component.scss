@@ -25,6 +25,11 @@
       box-shadow: inset 0 3px 4px rgba(0, 255, 0, 0.4);
     }
   }
+
+  @media screen and (max-width: 500px) {
+    width: 90%;
+    left: 4%;
+  }
 }
 .btn {
   margin-right: 1.2rem;

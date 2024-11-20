@@ -59,8 +59,36 @@ export class ChangeManagerComponent implements OnInit {
 
   onSave() {
     if (this.emailSelected) {
-      console.log(this.emailSelected, this.employee_data);
+      this.employee_data.map((emp) => {
+        if (emp.email === this.emailSelected) {
+          const rootEmp = this.employee_data.indexOf(this.data);
+          const selectedEmp = this.employee_data.indexOf(emp);
+
+          this.employee_data[rootEmp] = emp;
+          this.employee_data[selectedEmp] = this.data;
+
+          // Swapping managerIDs
+          const temp = emp.managerId;
+          emp.managerId = this.data.managerId;
+          this.data.managerId = temp;
+
+          // Swapping ids
+          const ids = this.data.id;
+          this.data.id = emp.id;
+          emp.id = ids;
+
+          // Swapping subordinates
+
+          const sub = this.data.subordinates;
+          this.data.subordinates = emp.subordinates;
+          emp.subordinates = sub;
+          this.eService.dataChanged.next(true);
+        }
+      });
+
+      this.show.emit(false);
     }
+    console.log(this.employee_data);
   }
 
   constructor(private eService: EmployeeService) {}

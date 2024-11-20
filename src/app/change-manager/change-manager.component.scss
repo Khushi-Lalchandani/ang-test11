@@ -1,11 +1,12 @@
 .overlay {
   background-color: #fee;
   position: fixed;
-  top: 30%;
+  top: 25%;
   left: 30%;
-  width: 30%;
+  width: 40%;
   height: 40%;
-  border: 1px solid #000;
+  // border: 1px solid #000;
+  box-shadow: inset 0 5px 16px 16px rgba(rgb(236, 163, 163), 0.4);
   padding: 2rem;
   border-radius: 1.6rem;
 
@@ -17,6 +18,17 @@
     width: 100%;
     padding: 1rem;
     border-radius: 8px;
+  }
+
+  @media screen and (max-width: 700px) {
+    width: 60%;
+    height: 45%;
+    left: 20%;
+  }
+
+  @media screen and (max-width: 400px) {
+    width: 80%;
+    left: 10%;
   }
 }
 

@@ -21,6 +21,7 @@
 
   &_details {
     &-text {
+      margin-bottom: 6px;
     }
   }
   &_flex {
@@ -49,12 +50,28 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  // gap: 1.2rem;
-  position: relative;
-
+  // position: relative;
   box-sizing: border-box;
   padding: 2rem;
-  border-bottom: 2px solid #000;
+  // border-bottom: 2px solid #000;
+}
+.outside {
+  border: 2px solid #891b13;
+  border-radius: 2rem;
+  border-left: none;
+  border-right: none;
+  margin: 2rem;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 2rem;
+    width: 0.2rem;
+    background-color: #000;
+    bottom: -2rem;
+    left: 50%;
+  }
 }
 
 .expand {
