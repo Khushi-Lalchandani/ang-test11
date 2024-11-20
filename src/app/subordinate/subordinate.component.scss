@@ -3,8 +3,21 @@
   border: 1px solid #ddd;
   box-sizing: border-box;
   border-radius: 1.4rem;
+  position: relative;
 
   width: 25rem;
+  height: 25rem;
+  margin-bottom: 2rem;
+
+  &::before {
+    content: "";
+    height: 2rem;
+    width: 0.2rem;
+    position: absolute;
+    top: -2rem;
+    left: 50%;
+    background-color: #000;
+  }
 
   &_details {
     &-text {
@@ -34,31 +47,21 @@
 .employee {
   list-style: none;
   display: flex;
-
-  justify-content: space-between;
-  position: relative;
-  gap: 1.2rem;
   flex-wrap: wrap;
-  margin: 0 2rem;
+  justify-content: space-between;
+  // gap: 1.2rem;
+  position: relative;
+
   box-sizing: border-box;
   padding: 2rem;
-  border: 1.5px solid rgb(214, 81, 81);
-  border-left: none;
-  border-right: none;
-
-  border-radius: 2rem;
-
-  @media screen and (min-width: 1200px) {
-    justify-content: space-around;
-  }
+  border-bottom: 2px solid #000;
 }
 
 .expand {
   height: auto;
   background-color: #ec65a6;
   box-shadow: 0 16px 16px 10px rgba(#000, 0.04);
-
-  border: none;
+  border: 1px solid #ec65a6;
 }
 .right {
   margin: 0 auto;
@@ -67,45 +70,21 @@
   margin-bottom: 0.4rem;
 }
 
-.outside {
-  border-bottom: 2px solid #000;
-  padding: 2rem 0;
-  position: relative;
-  &::after {
-    content: "";
-    position: absolute;
-    height: 4rem;
-    width: 0.2rem;
-    background-color: #000;
-    top: -2rem;
-    left: 50%;
-  }
-}
-
 .btn {
-  &_add,
-  &_change {
+  &_add {
     padding: 0.4rem 0.8rem;
     border-radius: 0.6rem;
     margin-bottom: 0.4rem;
     color: #fff;
     border: none;
     transition: all ease 0.2s;
-  }
-
-  &_add {
     background-color: #06801c;
 
     &:hover {
       background-color: rgba(#06801c, 0.7);
     }
   }
-  &_change {
-    background-color: #891b13;
-    &:hover {
-      background-color: rgba(#891b13, 0.8);
-    }
-  }
+
   &_img {
     display: block;
     margin-left: auto;

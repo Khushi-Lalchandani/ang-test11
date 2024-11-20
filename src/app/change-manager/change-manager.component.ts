@@ -19,41 +19,47 @@ export class ChangeManagerComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.data);
     this.employee_data.map((emp) => {
-      emp.id < this.data.id ? this.emails.push(emp.email) : this.emails;
+      emp.id !== this.data.id ? this.emails.push(emp.email) : this.emails;
     });
     console.log(this.emails);
   }
 
   onEmit() {
-    this.show.emit()
+    this.show.emit();
   }
+
+  // onSave() {
+  //   if (this.emailSelected) {
+  //     this.show.emit(false);
+
+  //     let subordinateAdded: boolean = false;
+
+  //     console.log(this.emailSelected, this.data);
+
+  //     this.employee_data.filter((emp) => {
+  //       if (emp.email === this.emailSelected) {
+  //         if (!emp.subordinates) {
+  //           emp.subordinates = [];
+  //         }
+  //         if (emp.subordinates && emp.subordinates.length < 5) {
+  //           this.eService.deleteEmployee(this.data.id);
+
+  //           emp.subordinates.push(this.data.id);
+  //           this.data.managerId = emp.id;
+  //           subordinateAdded = true;
+  //           this.eService.dataChanged.next(true);
+  //           console.log(this.employee_data);
+  //         }
+  //       }
+  //     });
+
+  //     this.eService.dataChanged.next(true);
+  //   }
+  // }
 
   onSave() {
     if (this.emailSelected) {
-      this.show.emit(false);
-
-      let subordinateAdded: boolean = false;
-
-      console.log(this.emailSelected, this.data);
-
-      this.employee_data.filter((emp) => {
-        if (emp.email === this.emailSelected) {
-          if (!emp.subordinates) {
-            emp.subordinates = [];
-          }
-          if (emp.subordinates && emp.subordinates.length < 5) {
-            this.eService.deleteEmployee(this.data.id);
-
-            emp.subordinates.push(this.data.id);
-            this.data.managerId = emp.id;
-            subordinateAdded = true;
-            this.eService.dataChanged.next(true);
-            console.log(this.employee_data);
-          }
-        }
-      });
-
-      this.eService.dataChanged.next(true);
+      console.log(this.emailSelected, this.employee_data);
     }
   }
 

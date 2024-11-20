@@ -12,7 +12,7 @@ export class EmployeeService {
       managerId: null,
       imageUrl: 'https://via.placeholder.com/150',
       email: 'john.doe@example.com',
-      subordinates: [2, 3],
+      subordinates: [2, 3, 4, 5, 6],
       designation: 'CEO',
     },
     {

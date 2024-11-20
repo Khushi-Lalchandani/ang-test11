@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Employee } from './exmployee.model';
 import { EmployeeService } from './exmployee.service';
@@ -13,7 +13,8 @@ export class AppComponent implements OnInit {
   rootEmployee!: Employee;
   subordinates: any;
   dataSubcription!: Subscription;
-
+  managerChanged!: boolean;
+  updatedEmp!: Employee;
   ngOnInit() {
     this.dataSubcription = this.eService.dataChanged.subscribe(
       (dataChanged) => {
@@ -50,6 +51,9 @@ export class AppComponent implements OnInit {
       );
     }
   }
-
+  changeManager(employee: Employee) {
+    this.managerChanged = true;
+    this.updatedEmp = employee;
+  }
   constructor(private eService: EmployeeService) {}
 }

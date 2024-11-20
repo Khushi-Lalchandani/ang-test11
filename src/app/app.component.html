@@ -24,6 +24,9 @@
           {{ rootEmployee.subordinates?.length }}
         </p>
       </div>
+      <button class="btn_change" (click)="changeManager(rootEmployee)">
+        Change manager
+      </button>
     </div>
   </div>
 </div>
@@ -32,3 +35,8 @@
   [subordinate]="subordinates"
   [expanded]="rootEmployee.isExpanded"
 ></app-subordinate>
+<app-change-manager
+  *ngIf="managerChanged"
+  [data]="updatedEmp"
+  (show)="managerChanged = $event"
+></app-change-manager>

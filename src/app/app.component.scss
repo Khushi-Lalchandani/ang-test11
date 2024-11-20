@@ -58,3 +58,17 @@
   margin: 2rem 0;
   background-color: #000;
 }
+.btn {
+  &_change {
+    background-color: #891b13;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.6rem;
+    margin-bottom: 0.4rem;
+    color: #fff;
+    border: none;
+    transition: all ease 0.2s;
+    &:hover {
+      background-color: rgba(#891b13, 0.8);
+    }
+  }
+}

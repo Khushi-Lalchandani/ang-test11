@@ -1,59 +1,55 @@
-<div class="outside">
-  <div class="employee">
-    <div
-      class="card"
-      *ngFor="let sub of subordinate"
-      [ngClass]="{
-        expand: sub.isExpanded && sub.subordinates,
-        right: subordinate.length === 1
-      }"
-    >
-      <img
-        class="btn_img"
-        src="../../assets/imgs/trash.png"
-        alt="Delete employee"
-        (click)="deleteEmployee(sub)"
-      />
+<div class="employee">
+  <div
+    class="card"
+    *ngFor="let sub of subordinate"
+    [ngClass]="{
+      expand: sub.isExpanded && sub.subordinates,
+      right: subordinate.length === 1
+    }"
+  >
+    <img
+      *ngIf="!sub.subordinates"
+      class="btn_img"
+      src="../../assets/imgs/trash.png"
+      alt="Delete employee"
+      (click)="deleteEmployee(sub)"
+    />
 
-      <div class="card_details" (click)="expand(sub)">
-        <div class="card_flex">
-          <img class="card_flex-img" [src]="sub.imageUrl" [alt]="sub.name" />
-          <div class="card_flex-details">
-            <h4 class="card_flex-details--header">{{ sub.name }}</h4>
-            <p class="card_flex-details--designation">{{ sub.designation }}</p>
-          </div>
+    <div class="card_details" (click)="expand(sub)">
+      <div class="card_flex">
+        <img class="card_flex-img" [src]="sub.imageUrl" [alt]="sub.name" />
+        <div class="card_flex-details">
+          <h4 class="card_flex-details--header">{{ sub.name }}</h4>
+          <p class="card_flex-details--designation">{{ sub.designation }}</p>
         </div>
-
-        <p class="card_details-text">
-          <strong>Email:</strong><br />
-          {{ sub.email }}
-        </p>
-        <p class="card_details-text">
-          <strong> Manager ID:</strong> {{ sub.managerId }}
-        </p>
-        <p
-          class="card_details-text"
-          *ngIf="sub.subordinates && sub.subordinates.length > 0"
-        >
-          <strong> Subordinates: </strong>{{ sub.subordinates.length }}
-        </p>
       </div>
 
-      <button
-        class="btn_add"
-        (click)="addSub(sub)"
-        [disabled]="sub.subordinates && sub.subordinates.length >= 5"
+      <p class="card_details-text">
+        <strong>Email:</strong><br />
+        {{ sub.email }}
+      </p>
+      <p class="card_details-text">
+        <strong> Manager ID:</strong> {{ sub.managerId }}
+      </p>
+      <p
+        class="card_details-text"
+        *ngIf="sub.subordinates && sub.subordinates.length > 0"
       >
-        Add Subordinate
-      </button>
-      <br />
-
-      <button class="btn_change" (click)="changeManager(sub)">
-        Change manager
-      </button>
+        <strong> Subordinates: </strong>{{ sub.subordinates.length }}
+      </p>
     </div>
+
+    <button
+      class="btn_add"
+      (click)="addSub(sub)"
+      [disabled]="sub.subordinates && sub.subordinates.length >= 5"
+    >
+      Add Subordinate
+    </button>
+    <br />
   </div>
 </div>
+
 <app-subordinate
   *ngIf="expandedSubordinate && expandedSubordinate.length > 0"
   [subordinate]="expandedSubordinate"
@@ -69,8 +65,3 @@
   (show)="showAddOverlay = $event"
   [data]="updatedSub"
 ></app-add-overlay>
-<app-change-manager
-  *ngIf="managerChanged"
-  [data]="updatedSub"
-  (show)="managerChanged = $event"
-></app-change-manager>
