@@ -17,11 +17,9 @@ export class ChangeManagerComponent implements OnInit {
   emailSelected: string = '';
   dataSubscription!: Subscription;
   ngOnInit(): void {
-    console.log(this.data);
     this.employee_data.map((emp) => {
       emp.id !== this.data.id ? this.emails.push(emp.email) : this.emails;
     });
-    console.log(this.emails);
   }
 
   onEmit() {
@@ -35,8 +33,9 @@ export class ChangeManagerComponent implements OnInit {
           const rootEmp = this.employee_data.indexOf(this.data);
           const selectedEmp = this.employee_data.indexOf(emp);
 
-          this.employee_data[rootEmp] = emp;
-          this.employee_data[selectedEmp] = this.data;
+          const tempObj = { ...this.data };
+          this.employee_data[rootEmp] = { ...emp };
+          this.employee_data[selectedEmp] = tempObj;
 
           // Swapping managerIDs
           const temp = emp.managerId;
@@ -49,7 +48,6 @@ export class ChangeManagerComponent implements OnInit {
           emp.id = ids;
 
           // Swapping subordinates
-
           const sub = this.data.subordinates;
           this.data.subordinates = emp.subordinates;
           emp.subordinates = sub;

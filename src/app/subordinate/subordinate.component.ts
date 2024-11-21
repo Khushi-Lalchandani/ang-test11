@@ -36,9 +36,9 @@ export class SubordinateComponent implements OnInit {
       }
     );
     this.expandedSubordinate = this.eService.getEmployeesByIds(ids);
+    return this.expandedSubordinate;
   }
   expand(sub: Employee) {
-    // console.log(this.eService.employee_data);
     this.subordinate.forEach((sibling) => {
       if (sibling !== sub) {
         sibling.isExpanded = false;
@@ -52,10 +52,12 @@ export class SubordinateComponent implements OnInit {
       this.loadSubordinates(sub.subordinates);
     }
   }
+
   deleteEmployee(sub: Employee) {
     this.showDeleteOverlay = true;
     this.updatedSub = sub;
   }
+
   addSub(sub: Employee) {
     this.showAddOverlay = true;
     this.updatedSub = sub;
